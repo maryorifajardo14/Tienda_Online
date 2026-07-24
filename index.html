@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beauty Glow Fashions | Tienda Online</title>
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="images/logo.png" alt="Beauty Glow Fashions" class="brand-logo-img">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Colecciones</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Icono de carrito con contador -->
+      <a href="#" class="cart-link" aria-label="Carrito de compras">
+        <i class="bi bi-handbag"></i>
+        <span class="cart-badge">3</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===================== CAROUSEL ===================== -->
+  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://picsum.photos/id/1027/1600/650" class="d-block w-100 carousel-img" alt="Colección Primavera">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-caption">
+          <p class="eyebrow">Beauty Glow Fashions</p>
+          <h2>Brilla con tu propio estilo</h2>
+          <p class="d-none d-md-block">Moda femenina pensada para hacerte sentir única.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://picsum.photos/id/1011/1600/650" class="d-block w-100 carousel-img" alt="Nueva Temporada">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-caption">
+          <p class="eyebrow">Nueva Temporada</p>
+          <h2>Colores que te representan</h2>
+          <p class="d-none d-md-block">Descubre las prendas favoritas de esta temporada.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://picsum.photos/id/1025/1600/650" class="d-block w-100 carousel-img" alt="Ofertas especiales">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-caption">
+          <p class="eyebrow">Ofertas especiales</p>
+          <h2>Hasta 30% de descuento</h2>
+          <p class="d-none d-md-block">Solo por tiempo limitado, date el gusto.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <!-- ===================== CUERPO PRINCIPAL ===================== -->
+  <div class="container my-5" id="productos">
+    <div class="row">
+
+      <!-- Columna izquierda: Categorías -->
+      <aside class="col-sm-3 mb-4">
+        <div class="category-panel">
+          <h5 class="category-title">Categorías</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item active-cat"><i class="bi bi-flower1 me-2"></i>Categoría 1 · Vestidos</li>
+            <li class="list-group-item"><i class="bi bi-handbag me-2"></i>Categoría 2 · Blusas</li>
+            <li class="list-group-item"><i class="bi bi-gem me-2"></i>Categoría 3 · Accesorios</li>
+            <li class="list-group-item"><i class="bi bi-bootie me-2" ></i>Categoría 4 · Calzado</li>
+            <li class="list-group-item"><i class="bi bi-stars me-2"></i>Categoría 5 · Nuevo</li>
+            <li class="list-group-item"><i class="bi bi-tag-heart me-2"></i>Categoría 6 · Ofertas</li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Columna derecha: Productos -->
+      <section class="col-sm-9">
+        <div class="d-flex justify-content-between align-items-end mb-3 flex-wrap">
+          <h4 class="section-title mb-0">Destacados de la semana</h4>
+          <span class="text-muted small">6 productos</span>
+        </div>
+
+        <div class="row g-4">
+
+          <!-- Producto 1 -->
+          <div class="col-12 col-md-4">
+            <div class="card product-card h-100">
+              <img src="https://picsum.photos/id/64/500/600" class="card-img-top" alt="Vestido floral rosa">
+              <div class="card-body d-flex flex-column">
+                <h6 class="card-title">Vestido floral rosa</h6>
+                <p class="price mb-3">Q259.00</p>
+                <button type="button" class="btn btn-add mt-auto">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Producto 2 -->
+          <div class="col-12 col-md-4">
+            <div class="card product-card h-100">
+              <img src="https://picsum.photos/id/91/500/600" class="card-img-top" alt="Blusa lila satinada">
+              <div class="card-body d-flex flex-column">
+                <h6 class="card-title">Blusa lila satinada</h6>
+                <p class="price mb-3">Q179.00</p>
+                <button type="button" class="btn btn-add mt-auto">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Producto 3 -->
+          <div class="col-12 col-md-4">
+            <div class="card product-card h-100">
+              <img src="https://picsum.photos/id/338/500/600" class="card-img-top" alt="Falda plisada pastel">
+              <div class="card-body d-flex flex-column">
+                <h6 class="card-title">Falda plisada pastel</h6>
+                <p class="price mb-3">Q199.00</p>
+                <button type="button" class="btn btn-add mt-auto">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Producto 4 -->
+          <div class="col-12 col-md-4">
+            <div class="card product-card h-100">
+              <img src="https://picsum.photos/id/447/500/600" class="card-img-top" alt="Suéter rosa palo">
+              <div class="card-body d-flex flex-column">
+                <h6 class="card-title">Suéter rosa palo</h6>
+                <p class="price mb-3">Q235.00</p>
+                <button type="button" class="btn btn-add mt-auto">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Producto 5 -->
+          <div class="col-12 col-md-4">
+            <div class="card product-card h-100">
+              <img src="https://picsum.photos/id/823/500/600" class="card-img-top" alt="Chaqueta denim clara">
+              <div class="card-body d-flex flex-column">
+                <h6 class="card-title">Chaqueta denim clara</h6>
+                <p class="price mb-3">Q315.00</p>
+                <button type="button" class="btn btn-add mt-auto">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Producto 6 -->
+          <div class="col-12 col-md-4">
+            <div class="card product-card h-100">
+              <img src="https://picsum.photos/id/1027/500/600" class="card-img-top" alt="Conjunto morado pastel">
+              <div class="card-body d-flex flex-column">
+                <h6 class="card-title">Conjunto morado pastel</h6>
+                <p class="price mb-3">Q289.00</p>
+                <button type="button" class="btn btn-add mt-auto">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer text-center">
+    <div class="container">
+      <p class="slogan-footer mb-2">✨ Brilla con tu propio estilo ✨</p>
+      <p class="mb-0">Diseñado por: Maryori Rachael Fajardo Paredes - 1890-23-18949</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

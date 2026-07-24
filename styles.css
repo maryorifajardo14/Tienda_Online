@@ -1,0 +1,180 @@
+:root {
+  --white: #ffffff;
+  --pink-pastel: #f6d9e6;
+  --pink-soft: #fbeef4;
+  --purple-pastel: #e3d3f0;
+  --purple-dark: #5b2a86;
+  --purple-darker: #46215e;
+  --ink: #4a3552;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--ink);
+  font-family: "Poppins", sans-serif;
+}
+
+/* ---------- Navbar ---------- */
+.brand-logo-img {
+  height: 56px;
+  width: auto;
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  color: var(--ink) !important;
+}
+.nav-link.active { color: var(--purple-dark) !important; font-weight: 600; }
+
+.cart-link {
+  position: relative;
+  font-size: 1.4rem;
+  color: var(--purple-dark);
+  margin-left: 1rem;
+}
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: var(--purple-dark);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* ---------- Carousel ---------- */
+.carousel-img {
+  height: 60vh;
+  min-height: 320px;
+  object-fit: cover;
+}
+.carousel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(91,42,134,0.55), rgba(246,217,230,0.25));
+}
+.carousel-caption {
+  bottom: 15%;
+  text-align: left;
+  left: 8%;
+  right: auto;
+  max-width: 520px;
+  z-index: 2;
+}
+.carousel-caption .eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--pink-pastel);
+  margin-bottom: 0.3rem;
+}
+.carousel-caption h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+.carousel-indicators [data-bs-target] {
+  background-color: var(--purple-dark);
+}
+
+/* ---------- Categorías ---------- */
+.category-panel {
+  background-color: #fff;
+  border: 1px solid var(--pink-pastel);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.category-title {
+  font-family: "Playfair Display", serif;
+  margin: 0;
+  padding: 1rem 1.1rem;
+  background: linear-gradient(120deg, var(--purple-dark), #7a49a5);
+  color: #fff;
+  font-size: 1rem;
+}
+.category-panel .list-group-item {
+  border: none;
+  border-bottom: 1px solid var(--pink-soft);
+  font-size: 0.92rem;
+  padding: 0.85rem 1.1rem;
+  cursor: default;
+  color: var(--ink);
+}
+.category-panel .list-group-item:last-child { border-bottom: none; }
+.category-panel .list-group-item:hover { background-color: var(--pink-soft); }
+.category-panel .list-group-item.active-cat {
+  font-weight: 600;
+  color: var(--purple-darker);
+  background-color: var(--purple-pastel);
+}
+
+/* ---------- Sección productos ---------- */
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  color: var(--purple-darker);
+}
+
+.product-card {
+  border: 1px solid var(--pink-pastel);
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(91, 42, 134, 0.15);
+}
+.product-card .card-img-top {
+  height: 260px;
+  object-fit: cover;
+}
+.product-card .card-body {
+  background: linear-gradient(180deg, #ffffff 0%, var(--pink-soft) 100%);
+}
+.product-card .card-title {
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--ink);
+}
+.product-card .price {
+  color: var(--purple-dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.btn-add {
+  background-color: var(--purple-dark);
+  color: #fff;
+  border: none;
+  font-size: 0.85rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 20px;
+}
+.btn-add:hover {
+  background-color: var(--purple-darker);
+  color: #fff;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background: linear-gradient(120deg, var(--purple-darker), var(--purple-dark));
+  color: var(--pink-soft);
+  padding: 1.6rem 0;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+.slogan-footer {
+  font-family: "Playfair Display", serif;
+  font-size: 1.05rem;
+  color: #fff;
+}
