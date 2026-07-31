@@ -21,7 +21,7 @@
   <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm sticky-top">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="#">
-        <img src="images/logo.png" alt="Beauty Glow Fashions" class="brand-logo-img">
+        <img src="logo.png" alt="Beauty Glow Fashions" class="brand-logo-img">
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
@@ -40,7 +40,7 @@
       <!-- Icono de carrito con contador -->
       <a href="#" class="cart-link" aria-label="Carrito de compras">
         <i class="bi bi-handbag"></i>
-        <span class="cart-badge">3</span>
+        <span class="cart-badge" id="cartBadge">0</span>
       </a>
     </div>
   </nav>
@@ -112,83 +112,12 @@
       <section class="col-sm-9">
         <div class="d-flex justify-content-between align-items-end mb-3 flex-wrap">
           <h4 class="section-title mb-0">Destacados de la semana</h4>
-          <span class="text-muted small">6 productos</span>
+          <span class="text-muted small" id="productCount">Cargando…</span>
         </div>
 
-        <div class="row g-4">
-
-          <!-- Producto 1 -->
-          <div class="col-12 col-md-4">
-            <div class="card product-card h-100">
-              <img src="https://picsum.photos/id/64/500/600" class="card-img-top" alt="Vestido floral rosa">
-              <div class="card-body d-flex flex-column">
-                <h6 class="card-title">Vestido floral rosa</h6>
-                <p class="price mb-3">Q259.00</p>
-                <button type="button" class="btn btn-add mt-auto">Agregar al carrito</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Producto 2 -->
-          <div class="col-12 col-md-4">
-            <div class="card product-card h-100">
-              <img src="https://picsum.photos/id/91/500/600" class="card-img-top" alt="Blusa lila satinada">
-              <div class="card-body d-flex flex-column">
-                <h6 class="card-title">Blusa lila satinada</h6>
-                <p class="price mb-3">Q179.00</p>
-                <button type="button" class="btn btn-add mt-auto">Agregar al carrito</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Producto 3 -->
-          <div class="col-12 col-md-4">
-            <div class="card product-card h-100">
-              <img src="https://picsum.photos/id/338/500/600" class="card-img-top" alt="Falda plisada pastel">
-              <div class="card-body d-flex flex-column">
-                <h6 class="card-title">Falda plisada pastel</h6>
-                <p class="price mb-3">Q199.00</p>
-                <button type="button" class="btn btn-add mt-auto">Agregar al carrito</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Producto 4 -->
-          <div class="col-12 col-md-4">
-            <div class="card product-card h-100">
-              <img src="https://picsum.photos/id/447/500/600" class="card-img-top" alt="Suéter rosa palo">
-              <div class="card-body d-flex flex-column">
-                <h6 class="card-title">Suéter rosa palo</h6>
-                <p class="price mb-3">Q235.00</p>
-                <button type="button" class="btn btn-add mt-auto">Agregar al carrito</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Producto 5 -->
-          <div class="col-12 col-md-4">
-            <div class="card product-card h-100">
-              <img src="https://picsum.photos/id/823/500/600" class="card-img-top" alt="Chaqueta denim clara">
-              <div class="card-body d-flex flex-column">
-                <h6 class="card-title">Chaqueta denim clara</h6>
-                <p class="price mb-3">Q315.00</p>
-                <button type="button" class="btn btn-add mt-auto">Agregar al carrito</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Producto 6 -->
-          <div class="col-12 col-md-4">
-            <div class="card product-card h-100">
-              <img src="https://picsum.photos/id/1027/500/600" class="card-img-top" alt="Conjunto morado pastel">
-              <div class="card-body d-flex flex-column">
-                <h6 class="card-title">Conjunto morado pastel</h6>
-                <p class="price mb-3">Q289.00</p>
-                <button type="button" class="btn btn-add mt-auto">Agregar al carrito</button>
-              </div>
-            </div>
-          </div>
-
+        <!-- Los productos se cargan dinámicamente desde la API mediante JavaScript (ver script al final del documento) -->
+        <div class="row g-4" id="contenedor-productos">
+          <div class="col-12 text-center text-muted py-5">Cargando productos…</div>
         </div>
       </section>
     </div>
@@ -204,5 +133,83 @@
 
   <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- ===================== CARGA DINÁMICA DE PRODUCTOS (Fetch API) ===================== -->
+  <script>
+    const API_URL = "https://backservicetest-g8emcvdff0fqe2b8.canadacentral-01.azurewebsites.net/api/producto";
+
+    const contenedor = document.getElementById("contenedor-productos");
+    const productCount = document.getElementById("productCount");
+    const cartBadge = document.getElementById("cartBadge");
+    let carrito = 0;
+
+    async function cargarProductos() {
+      try {
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+          throw new Error(`Respuesta no válida del servidor (status ${response.status})`);
+        }
+
+        const productos = await response.json();
+
+        // Limpiamos el mensaje de "Cargando..."
+        contenedor.innerHTML = "";
+
+        // Filtramos registros vacíos/incompletos que a veces devuelve la API de prueba
+        const productosValidos = productos.filter(p => p.nombre && p.imagen);
+
+        productosValidos.forEach(producto => {
+          const col = document.createElement("div");
+          col.className = "col-sm-12 col-md-4 mb-4";
+
+          let precioHTML = "";
+          if (producto.enOferta && producto.precioOferta != null) {
+            precioHTML = `
+              <p class="price mb-3">
+                Q${parseFloat(producto.precioOferta).toFixed(2)}
+                <small class="text-muted text-decoration-line-through ms-2">Q${parseFloat(producto.precio).toFixed(2)}</small>
+              </p>`;
+          } else {
+            precioHTML = `<p class="price mb-3">Q${parseFloat(producto.precio).toFixed(2)}</p>`;
+          }
+
+          col.innerHTML = `
+            <div class="card product-card h-100">
+              <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}"
+                   onerror="this.onerror=null;this.src='https://placehold.co/500x600?text=Sin+imagen';">
+              <div class="card-body d-flex flex-column">
+                <h6 class="card-title">${producto.nombre}</h6>
+                <p class="card-text small text-muted">${producto.descripcion || ""}</p>
+                ${precioHTML}
+                <button type="button" class="btn btn-add mt-auto agregarCarrito">Agregar al carrito</button>
+              </div>
+            </div>
+          `;
+
+          col.querySelector(".agregarCarrito").addEventListener("click", () => {
+            carrito++;
+            cartBadge.textContent = carrito;
+          });
+
+          contenedor.appendChild(col);
+        });
+
+        productCount.textContent = `${productosValidos.length} productos`;
+
+      } catch (error) {
+        console.error("Error al cargar productos:", error);
+        contenedor.innerHTML = `
+          <div class="col-12">
+            <div class="alert alert-danger text-center mb-0">
+              No se pudieron cargar los productos. Intenta recargar la página.
+            </div>
+          </div>`;
+        productCount.textContent = "0 productos";
+      }
+    }
+
+    cargarProductos();
+  </script>
 </body>
 </html>
